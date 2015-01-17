@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include <CocosGUI.h>
 
 USING_NS_CC;
 
@@ -71,10 +72,53 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
-    
+
+
+    // Our custom UI
+    this->setupUI();
+
     return true;
 }
 
+void HelloWorld::setupUI()
+{
+    auto textButton = ui::Text::create("Buy Item", "Arial", 30);
+    textButton->setName("IAP_00_button");
+    textButton->setNormalizedPosition(Vec2(.5,.1f));
+    textButton->setTouchEnabled(true);
+    textButton->setTouchScaleChangeEnabled(true);
+    textButton->addTouchEventListener([=](Ref* sender, ui::Widget::TouchEventType touchType) {
+        if(touchType == ui::Widget::TouchEventType::ENDED) {
+            // Testing Mock IAP to show calling into and out of platform-specific code and back
+            //if(! UserDefault::getInstance()->getBoolForKey("IAP_00_purchased"))
+            {
+                // show alert view
+                auto device = STDevice::getInstance();
+                device->showAlertView(this, "IAP Purchase", "Item: $1.99", "Purchase", "Cancel");
+            }
+        }
+    });
+    this->addChild(textButton);
+}
+
+void HelloWorld::alertViewDidClose(int buttonIndex)
+{
+    if (buttonIndex == 1)
+    {
+        // okay
+        auto prefs = UserDefault::getInstance();
+        prefs->setBoolForKey("IAP_00_purchased", true);
+        prefs->flush();
+
+        {
+            auto button = this->getChildByName<ui::Text*>("IAP_00_button");
+            if(button) {
+                button->setString("Item Purchased!");
+                button->setEnabled(false);
+            }
+        }
+    }
+}
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {

@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
+#include "STDevice.h"
 
 USING_NS_CC;
 
@@ -37,6 +38,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
+    // Let's update our menu
+    this->setupMenu(glview);
+
     // create a scene. it's an autorelease object
     auto scene = HelloWorld::createScene();
 
@@ -60,4 +64,22 @@ void AppDelegate::applicationWillEnterForeground() {
 
     // if you use SimpleAudioEngine, it must resume here
     // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+}
+
+void AppDelegate::setupMenu(cocos2d::GLView* glview)
+{
+#if ((CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX))
+    auto glviewImpl = dynamic_cast<GLViewImpl*>(glview);
+    if(glviewImpl) {
+        // here getInstance creates implementation specific
+        auto device = STDevice::getInstance();
+        device->setupMenu(glviewImpl, this);
+    }
+#endif
+}
+
+void AppDelegate::checkForUpdates(int dummy)
+{
+    log("checking for updates ... with dummy = %d", dummy);
+    log("received from NSMenu target action, passed onto this callback");
 }
