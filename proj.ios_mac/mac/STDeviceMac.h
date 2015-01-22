@@ -16,11 +16,13 @@
 // simple ObjC class to receive menu action(s)
 @interface STDeviceImplMac : NSObject
 {
-    void* _iosDelegate;
+    void* _macDelegate;
 }
 
 // Delegate used to call back into c++ land
 @property(nonatomic, assign) void* macDelegate;
+
+@property (assign) IBOutlet NSMenu *macMainMenu;
 
 // Actions called from NSMenu
 - (IBAction)checkForUpdates:(id)sender;

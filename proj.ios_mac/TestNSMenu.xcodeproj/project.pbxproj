@@ -59,6 +59,7 @@
 		521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6319F0C34300D177D7 /* Default-736h@3x.png */; };
 		521A8EA919F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
+		85096F2B1A7077A9001308F1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85096F2A1A7077A9001308F1 /* MainMenu.xib */; };
 		85DE070C1A6A5A8B00BEAD37 /* STDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85DE070A1A6A5A8B00BEAD37 /* STDevice.cpp */; };
 		85DE070D1A6A5A8B00BEAD37 /* STDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85DE070A1A6A5A8B00BEAD37 /* STDevice.cpp */; };
 		85DE07101A6A5A9800BEAD37 /* STDeviceMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 85DE070F1A6A5A9800BEAD37 /* STDeviceMac.mm */; };
@@ -153,6 +154,7 @@
 		521A8E6219F0C34300D177D7 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
+		85096F2A1A7077A9001308F1 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = mac/MainMenu.xib; sourceTree = "<group>"; };
 		85DE070A1A6A5A8B00BEAD37 /* STDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = STDevice.cpp; sourceTree = "<group>"; };
 		85DE070B1A6A5A8B00BEAD37 /* STDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STDevice.h; sourceTree = "<group>"; };
 		85DE070E1A6A5A9800BEAD37 /* STDeviceMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STDeviceMac.h; path = mac/STDeviceMac.h; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				503AE10417EB98FF00D1A890 /* Prefix.pch */,
 				85DE070E1A6A5A9800BEAD37 /* STDeviceMac.h */,
 				85DE070F1A6A5A9800BEAD37 /* STDeviceMac.mm */,
+				85096F2A1A7077A9001308F1 /* MainMenu.xib */,
 			);
 			name = mac;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
 				46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */,
+				85096F2B1A7077A9001308F1 /* MainMenu.xib in Resources */,
 				46880B7E19C43A67006E1F66 /* CloseSelected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -45,6 +45,13 @@ USING_NS_CC;
     [[NSApp mainWindow] addChildWindow:win ordered:NSWindowAbove];
 }
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    NSLog(@"woke up from nib, let's try to extract menu");
+    [NSApp setMainMenu:self.macMainMenu];
+}
+
 @end
 
 
@@ -80,6 +87,19 @@ void STDeviceMac::showAlertView(STDeviceDelegate* pDelegate, const std::string& 
 void STDeviceMac::setupMenu(GLViewImpl* glview, STDeviceDelegate* pDelegate)
 {
     _deviceImpl.macDelegate = (void*)pDelegate;
+
+    // > 10.8
+    id nibName = @"MainMenu";
+    NSArray*    topLevelObjs = nil;
+    [[NSBundle mainBundle] loadNibNamed:nibName owner:_deviceImpl topLevelObjects:&topLevelObjs];
+    if ([topLevelObjs count] == 0)
+    {
+        NSLog(@"Warning! Could not load myNib file.\n");
+        return;
+    }
+
+//    // < 10.7
+//    [NSBundle loadNibNamed:nibName owner:_deviceImpl];
 
     NSWindow * appWindow = (NSWindow *)glfwGetCocoaWindow(glview->getWindow());
     if(appWindow)
